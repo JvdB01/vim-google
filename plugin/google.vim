@@ -1,7 +1,7 @@
 command! -nargs=1 Google call GoogleFunc(<f-args>)
 
-if !exists("GoogleDefault")
-    let GoogleDefault="elinks"
+if !exists("g:GoogleDefault")
+    let g:GoogleDefault="elinks"
 endif
 
 function! GoogleFunc(query)
@@ -9,7 +9,7 @@ function! GoogleFunc(query)
     execute 'normal i'.a:query 
     execute 's/\ /+/g'
     execute 's/&/\\\%26'
-    execute 'normal I!'.GoogleDefault.' google.com/search?q='
+    execute 'normal I!'.g:GoogleDefault.' google.com/search?q='
     execute 'w'
     execute 'source %'
     execute 'q'
